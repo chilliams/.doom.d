@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-one-light)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -52,7 +52,21 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
 (setq mac-command-modifier 'control)
 (setq mac-option-modifier 'meta)
 (setq mac-right-option-modifier 'meta)
 (setq mac-pass-command-to-system nil)
+
+(setq async-shell-command-buffer 'confirm-kill-process)
+(defun wrap-async-shell-command (args)
+  "Execute `async-shell-command' with a better buffer names"
+  (let ((command (nth 0 args))
+        (output-buffer (nth 1 args))
+        (error-buffer (nth 2 args)))
+    (list command
+          (or output-buffer
+              (concat "*" command " in " default-directory "*"))
+          (or error-buffer
+              (concat "* errors from " command " in " default-directory "*")))))
+(advice-add 'async-shell-command :filter-args #'wrap-async-shell-command)
