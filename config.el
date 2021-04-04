@@ -53,11 +53,15 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+
+;; MacOS tweaks
 (setq mac-command-modifier 'control)
 (setq mac-option-modifier 'meta)
 (setq mac-right-option-modifier 'meta)
 (setq mac-pass-command-to-system nil)
 
+
+;; Make async-shell-command do what I want.
 (setq async-shell-command-buffer 'confirm-kill-process)
 (defun wrap-async-shell-command (args)
   "Execute `async-shell-command' with a better buffer names"
@@ -70,3 +74,32 @@
           (or error-buffer
               (concat "* errors from " command " in " default-directory "*")))))
 (advice-add 'async-shell-command :filter-args #'wrap-async-shell-command)
+
+
+;; Useful functions
+(defun curl (url)
+  "Create tmp buffer with curl output"
+  (interactive "sURL: ")
+  (let ((buffer url))
+    (with-output-to-temp-buffer buffer
+      (shell-command (format "curl -s %s" url) buffer)
+      (pop-to-buffer buffer))))
+
+(defun google ()
+  "Googles a query or region if any."
+  (interactive)
+  (browse-url
+   (concat
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
+    (if mark-active
+        (buffer-substring (region-beginning) (region-end))
+      (read-string "Google: ")))))
+
+(defun show-and-copy-buffer-filename ()
+  "Show and copy the full path to the current file in the minibuffer."
+  (interactive)
+  ;; list-buffers-directory is the variable set in dired buffers
+  (let ((file-name (or (buffer-file-name) list-buffers-directory)))
+    (if file-name
+        (message (kill-new file-name))
+      (error "Buffer not visiting a file"))))
