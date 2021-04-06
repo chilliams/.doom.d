@@ -54,6 +54,11 @@
 ;; they are implemented.
 
 
+;; Override how Doom handles buffers
+(setq doom-real-buffer-functions '(doom-dired-buffer-p doom-special-buffer-p))
+(setq doom-unreal-buffer-functions '(minibufferp))
+
+
 ;; MacOS tweaks
 (setq mac-command-modifier 'control)
 (setq mac-option-modifier 'meta)
@@ -108,3 +113,7 @@
     (if file-name
         (message (kill-new file-name))
       (error "Buffer not visiting a file"))))
+
+
+;; Use emacs as pager
+(require 'emacs-pager)
