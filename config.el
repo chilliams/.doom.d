@@ -55,7 +55,9 @@
 
 
 ;; Override how Doom handles buffers
-(setq doom-real-buffer-functions '(doom-dired-buffer-p doom-special-buffer-p))
+(setq doom-real-buffer-functions '(doom-dired-buffer-p
+                                   doom-special-buffer-p
+                                   doom-non-file-visiting-buffer-p))
 (setq doom-unreal-buffer-functions '(minibufferp))
 
 
