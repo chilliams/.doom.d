@@ -119,3 +119,9 @@
 
 ;; Use emacs as pager
 (require 'emacs-pager)
+
+
+;; bazel
+(setq bazel-mode-buildifier-before-save t)
+(add-hook 'bazel-mode-hook #'flymake-mode)
+(require 'bazel-build)
