@@ -116,6 +116,24 @@
         (message (kill-new file-name))
       (error "Buffer not visiting a file"))))
 
+(defun copy-gerrit-link ()
+  (interactive)
+  (let ((file-name (or (buffer-file-name) list-buffers-directory))
+        (alpha (getenv "ALPHA")))
+    (when (not file-name)
+      (error "Buffer not visiting a file"))
+    (when (not (string-prefix-p alpha file-name))
+      (error "File not in alpha"))
+    (let ((link
+           (replace-regexp-in-string
+            (regexp-quote alpha)
+            "https://gerrit.yext.com/plugins/gitiles/alpha/+/refs/heads/master/"
+            file-name
+            nil
+            'literal))
+          (line (number-to-string (line-number-at-pos))))
+      (message (kill-new (concat link "#" line))))))
+
 
 ;; Use emacs as pager
 (require 'emacs-pager)
@@ -124,3 +142,7 @@
 ;; bazel
 (setq bazel-mode-buildifier-before-save t)
 (add-hook 'bazel-mode-hook #'flymake-mode)
+
+
+;; js
+(setq js2-basic-offset 2)
