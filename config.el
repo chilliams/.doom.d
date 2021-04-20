@@ -146,3 +146,9 @@
 
 ;; js
 (setq js2-basic-offset 2)
+
+
+;; java
+(load "~/.doom.d/google-c-style")
+(require 'google-c-style)
+(add-hook 'java-mode-hook #'google-set-c-style)
