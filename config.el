@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-moonlight)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -68,7 +68,8 @@
 (setq mac-pass-command-to-system nil)
 
 
-;; Make shell history OP
+;; shell
+(setenv "EDITOR" "emacsclient")
 (require 'shell)
 (define-key shell-mode-map (kbd "M-r") #'counsel-shell-history)
 
