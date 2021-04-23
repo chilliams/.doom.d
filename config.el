@@ -54,6 +54,10 @@
 ;; they are implemented.
 
 
+;; misc tweaks
+(set-default 'truncate-lines t)
+
+
 ;; Override how Doom handles buffers
 (setq doom-real-buffer-functions '(doom-dired-buffer-p
                                    doom-special-buffer-p
