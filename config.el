@@ -114,6 +114,7 @@
         (message (kill-new file-name))
       (error "Buffer not visiting a file"))))
 
+(require 'magit-git)
 (defun copy-gerrit-link ()
   (interactive)
   (let ((file-name (or (buffer-file-name) list-buffers-directory))
@@ -125,7 +126,8 @@
     (let ((link
            (replace-regexp-in-string
             (regexp-quote alpha)
-            "https://gerrit.yext.com/plugins/gitiles/alpha/+/refs/heads/master/"
+            (concat "https://gerrit.yext.com/plugins/gitiles/alpha/+/"
+                    (magit-git-string "merge-base" "origin/master" "HEAD"))
             file-name
             nil
             'literal))
