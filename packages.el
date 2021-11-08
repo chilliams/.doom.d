@@ -15,14 +15,6 @@
 ;(package! another-package
 ;  :recipe (:host github :repo "username/repo"))
 
-(package! emacs-pager
-  :recipe (:host github :repo "chilliams/emacs-pager"))
-
-(package! emacs-bazel-mode
-  :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
-
-(package! protobuf-mode)
-
 ;; If the package you are trying to install does not contain a PACKAGENAME.el
 ;; file, or is located in a subdirectory of the repo, you'll need to specify
 ;; `:files' in the `:recipe':
@@ -56,3 +48,13 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+(package! emacs-pager
+  :recipe (:host github :repo "chilliams/emacs-pager"))
+
+(package! emacs-bazel-mode
+  :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
+
+(package! protobuf-mode)
+
+(package! string-inflection)

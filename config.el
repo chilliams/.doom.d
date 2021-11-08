@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+(setq doom-font (font-spec :family "Courier" :size 16 :weight 'semi-light)
+      doom-variable-pitch-font nil)
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -152,3 +152,20 @@
 (load "~/.doom.d/google-c-style")
 (require 'google-c-style)
 (add-hook 'java-mode-hook #'google-set-c-style)
+
+(defun jump-to-test-dir ()
+  "Jump to the test version of the current directory."
+  (interactive)
+  (dired (replace-regexp-in-string "/src/" "/test/" default-directory)))
+
+(defun jump-to-src-dir ()
+  "Jump to the src version of the current directory."
+  (interactive)
+  (dired (replace-regexp-in-string "/test/" "/src/" default-directory)))
+
+(defun toggle-src-test-dir ()
+  "Jump between src and test dirs."
+  (interactive)
+  (cond ((string-match "/src/" default-directory) (jump-to-test-dir))
+        ((string-match "/test/" default-directory) (jump-to-src-dir))
+        (t (print "Not in src or test directory"))))
