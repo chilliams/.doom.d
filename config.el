@@ -55,6 +55,7 @@
 
 
 ;; misc tweaks
+(require 'dired-x) ;; Make C-x C-j work on startup
 (set-default 'truncate-lines t)
 
 
