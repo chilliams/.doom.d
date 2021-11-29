@@ -170,3 +170,10 @@
   (cond ((string-match "/src/" default-directory) (jump-to-test-dir))
         ((string-match "/test/" default-directory) (jump-to-src-dir))
         (t (print "Not in src or test directory"))))
+
+(setq lsp-java-vmargs '("-XX:HotswapAgent=core"
+                        "-XX:GCTimeRatio=4"
+                        "-XX:AdaptiveSizePolicyWeight=90"
+                        "-Dsun.zip.disableMemoryMapping=true"
+                        "-Xmx1G"
+                        "-Xms100m"))
