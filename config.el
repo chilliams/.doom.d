@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Consolas" :size 18 :weight 'normal)
+(setq doom-font (font-spec :family "Courier" :size 15 :weight 'normal)
       doom-variable-pitch-font nil)
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -177,3 +177,18 @@
                         "-Dsun.zip.disableMemoryMapping=true"
                         "-Xmx1G"
                         "-Xms100m"))
+
+;; work
+(defun yext-java-format ()
+  (interactive)
+  (shell-command
+   (concat "$ALPHA/tools/java/javafmt/format-java-changes.sh " buffer-file-name))
+  (revert-buffer t t))
+
+(defun yext-java-format-after-save ()
+  (interactive)
+  (when (and  (eq major-mode 'java-mode)
+              (getenv "ALPHA"))
+    (yext-java-format)))
+
+(add-hook 'after-save-hook 'yext-java-format-after-save)
