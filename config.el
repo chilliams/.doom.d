@@ -56,8 +56,7 @@
 
 ;; misc tweaks
 (require 'dired-x) ;; Make C-x C-j work on startup
-(set-default 'truncate-lines t)
-
+(setq-default truncate-lines nil)
 
 ;; MacOS tweaks
 (setq mac-command-modifier 'control)
@@ -70,7 +69,6 @@
 (setenv "EDITOR" "emacsclient")
 (require 'shell)
 (define-key shell-mode-map (kbd "M-r") #'counsel-shell-history)
-(add-hook 'shell-mode-hook (lambda () (toggle-truncate-lines nil)))
 
 ;; Make async-shell-command do what I want.
 (setq async-shell-command-buffer 'confirm-kill-process)
