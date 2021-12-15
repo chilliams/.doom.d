@@ -190,3 +190,11 @@
     (yext-java-format)))
 
 (add-hook 'after-save-hook 'yext-java-format-after-save)
+
+(defun set-region-writeable (begin end)
+  "Removes the read-only text property from the marked region."
+  (interactive "r")
+  (let ((modified (buffer-modified-p))
+        (inhibit-read-only t))
+    (remove-text-properties begin end '(read-only t))
+    (set-buffer-modified-p modified)))
