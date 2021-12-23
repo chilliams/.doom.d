@@ -19,13 +19,13 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Courier" :size 15 :weight 'normal)
+(setq doom-font (font-spec :family "Monaco" :size 12 :weight 'normal)
       doom-variable-pitch-font nil)
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-one-light)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -198,3 +198,11 @@
         (inhibit-read-only t))
     (remove-text-properties begin end '(read-only t))
     (set-buffer-modified-p modified)))
+
+(after! lsp-mode
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]bazel-.*\\'"))
+
+(use-package! company-glsl  ; for `glsl-mode'
+  :when (featurep! :completion company)
+  :after glsl-mode
+  :config (set-company-backend! 'glsl-mode 'company-glsl))

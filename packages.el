@@ -58,3 +58,9 @@
 (package! protobuf-mode)
 
 (package! string-inflection)
+
+(when (package! glsl-mode :pin "9b2e5f28e489    a1f73c4aed734105618ac0dc0c43")
+  (when (featurep! :completion company)
+    (package! company-glsl
+      :recipe (:host github :repo "Kaali/company-glsl")
+      :pin "404cd0694ab34971f9c01eb22126cd2e7d3f9dc4")))
