@@ -221,3 +221,6 @@ See URL `http://stylelint.io/'."
   :error-parser flycheck-parse-stylelint
   :predicate flycheck-buffer-nonempty-p
   :modes (scss-mode))
+
+(grep-apply-setting 'grep-command "rg -M 200 --vimgrep --no-column ")
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
