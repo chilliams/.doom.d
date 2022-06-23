@@ -28,7 +28,7 @@ PROMPT_COMMAND="prompt_show_ec; $PROMPT_COMMAND"
 
 # Show git branch in prompt
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 PS1="\w\$(parse_git_branch)@\@\n$ "
