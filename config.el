@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-one-light)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -222,5 +222,5 @@ See URL `http://stylelint.io/'."
   :predicate flycheck-buffer-nonempty-p
   :modes (scss-mode))
 
-(grep-apply-setting 'grep-command "rg -M 200 --vimgrep --no-column ")
+(grep-apply-setting 'grep-command "rg --vimgrep --no-column --max-columns 200 --max-filesize 50K --ignore-case ")
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
