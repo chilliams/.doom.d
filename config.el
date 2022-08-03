@@ -68,7 +68,6 @@
 ;; shell
 (setenv "EDITOR" "emacsclient")
 (require 'shell)
-(define-key shell-mode-map (kbd "M-r") #'counsel-shell-history)
 
 ;; Make async-shell-command do what I want.
 (setq async-shell-command-buffer 'confirm-kill-process)
