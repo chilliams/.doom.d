@@ -223,3 +223,5 @@ See URL `http://stylelint.io/'."
 
 (grep-apply-setting 'grep-command "rg --vimgrep --no-column --max-columns 200 --max-filesize 50K --ignore-case ")
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
+
+(setq +format-on-save-enabled-modes '(go-mode))
