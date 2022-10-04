@@ -33,6 +33,8 @@ parse_git_branch() {
 
 PS1="\w\$(parse_git_branch)@\@\n$ "
 
+GOPACKAGESDRIVER=$HOME/.doom.d/gopackagesdriver.sh
+
 if [ $INSIDE_EMACS ]; then
     export EDITOR="emacsclient"
     export PAGER=$HOME/.emacs.d/.local/straight/repos/emacs-pager/emacs-pager
