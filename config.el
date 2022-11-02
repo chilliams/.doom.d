@@ -221,7 +221,7 @@ See URL `http://stylelint.io/'."
   :predicate flycheck-buffer-nonempty-p
   :modes (scss-mode))
 
-(grep-apply-setting 'grep-command "rg --vimgrep --no-column --max-columns 200 --max-filesize 50K --ignore-case ")
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
+(grep-apply-setting 'grep-command "rg --vimgrep --no-column --max-columns 200 --max-filesize 1M --ignore-case ")
+;;(add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
 
 (setq +format-on-save-enabled-modes '(go-mode))
