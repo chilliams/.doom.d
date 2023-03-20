@@ -142,9 +142,9 @@
 (add-hook 'bazel-mode-hook #'flymake-mode)
 
 
-;; js
-(setq js2-basic-offset 2)
-
+;; indentation
+(setq css-indent-offset 2)
+(setq js-indent-level 2)
 
 ;; java
 (load "~/.doom.d/google-c-style")
@@ -225,3 +225,5 @@ See URL `http://stylelint.io/'."
 ;;(add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
 
 (setq +format-on-save-enabled-modes '(go-mode))
+
+(load "~/.doom.d/edward2")

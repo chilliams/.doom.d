@@ -37,7 +37,7 @@ GOPACKAGESDRIVER=$HOME/.doom.d/gopackagesdriver.sh
 
 if [ $INSIDE_EMACS ]; then
     export EDITOR="emacsclient"
-    export PAGER=$HOME/.emacs.d/.local/straight/repos/emacs-pager/emacs-pager
-    export GIT_PAGER=$HOME/.emacs.d/.local/straight/repos/emacs-pager/emacs-pager
+    export PAGER=$HOME/.config/emacs/.local/straight/repos/emacs-pager/emacs-pager
+    export GIT_PAGER=$HOME/.config/emacs/.local/straight/repos/emacs-pager/emacs-pager
     export TERM="xterm-256color"
 fi
