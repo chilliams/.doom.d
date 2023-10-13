@@ -1,0 +1,10 @@
+# https://blog.aspect.dev/bazelrc-flags
+build --bes_upload_mode=fully_async
+build --experimental_remote_merkle_tree_cache
+build --experimental_reuse_sandbox_directories
+build --incompatible_strict_action_env
+build --noexperimental_check_output_files
+build --nolegacy_external_runfiles
+# Faster, but unreliable on MacOS:
+# https://github.com/bazelbuild/bazel/issues/13226
+build --watchfs
