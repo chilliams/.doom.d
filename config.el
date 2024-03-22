@@ -227,3 +227,11 @@ See URL `http://stylelint.io/'."
 (setq +format-on-save-enabled-modes '(go-mode))
 
 (load "~/.doom.d/edward2")
+
+;; Don't run Prettier unless .prettierrc is present.
+(add-hook! 'js2-mode-hook
+  (unless (locate-dominating-file default-directory ".prettierrc")
+    (apheleia-mode -1)))
+(add-hook! 'typescript-mode-hook
+  (unless (locate-dominating-file default-directory ".prettierrc")
+    (apheleia-mode -1)))
