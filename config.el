@@ -227,3 +227,5 @@ See URL `http://stylelint.io/'."
 (setq +format-on-save-enabled-modes '(go-mode))
 
 (load "~/.doom.d/edward2")
+
+(map! :map shell-mode-map "M-r" #'consult-history)
