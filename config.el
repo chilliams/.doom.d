@@ -221,7 +221,7 @@ See URL `http://stylelint.io/'."
   :predicate flycheck-buffer-nonempty-p
   :modes (scss-mode))
 
-(grep-apply-setting 'grep-command "rg --vimgrep --no-column --max-columns 200 --max-filesize 1M --ignore-case ")
+(grep-apply-setting 'grep-command "rg --vimgrep --no-column --max-columns 200 --max-filesize 1M --sort-files --ignore-case ")
 ;;(add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
 
 (setq +format-on-save-enabled-modes '(go-mode))
@@ -229,3 +229,9 @@ See URL `http://stylelint.io/'."
 (load "~/.doom.d/edward2")
 
 (map! :map shell-mode-map "M-r" #'consult-history)
+
+(after! tide
+  (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append))
+
+(setq cua-enable-cua-keys nil)  ; enable only CUA's rectangle selections
+(cua-mode t)

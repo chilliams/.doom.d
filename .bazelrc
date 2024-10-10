@@ -1,10 +1,25 @@
 # https://blog.aspect.dev/bazelrc-flags
+# https://docs.aspect.build/guides/bazelrc/
 build --bes_upload_mode=fully_async
 build --experimental_remote_merkle_tree_cache
-build --experimental_reuse_sandbox_directories
 build --incompatible_strict_action_env
-build --noexperimental_check_output_files
+
+build --incompatible_remote_results_ignore_disk
+build --experimental_reuse_sandbox_directories
 build --nolegacy_external_runfiles
+
+build --noexperimental_check_external_repository_files
+fetch --noexperimental_check_external_repository_files
+query --noexperimental_check_external_repository_files
+
+build --reuse_sandbox_directories
+
+build --noexperimental_action_cache_store_output_metadata
+
+build --noexperimental_check_output_files
+fetch --noexperimental_check_output_files
+query --noexperimental_check_output_files
+
 # Faster, but unreliable on MacOS:
 # https://github.com/bazelbuild/bazel/issues/13226
 build --watchfs
