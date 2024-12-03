@@ -235,3 +235,8 @@ See URL `http://stylelint.io/'."
 
 (setq cua-enable-cua-keys nil)  ; enable only CUA's rectangle selections
 (cua-mode t)
+
+;; Someone at work decided to use the .lib extension 🤨
+;; BTW, `apropos-value' is so cool 😎
+(delete ".lib" completion-ignored-extensions)
+(delete ".lib" dired-omit-extensions)
