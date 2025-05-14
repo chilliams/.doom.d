@@ -109,7 +109,9 @@
   ;; list-buffers-directory is the variable set in dired buffers
   (let ((file-name (or (buffer-file-name) list-buffers-directory)))
     (if file-name
-        (message (kill-new file-name))
+        (progn
+          (kill-new file-name)
+          (message file-name))
       (error "Buffer not visiting a file"))))
 
 (require 'magit-git)
@@ -138,7 +140,7 @@
 
 
 ;; bazel
-(setq bazel-mode-buildifier-before-save t)
+(setq bazel-mode-buildifier-before-save nil)
 (add-hook 'bazel-mode-hook #'flymake-mode)
 
 
@@ -226,7 +228,7 @@ See URL `http://stylelint.io/'."
 
 (setq +format-on-save-enabled-modes '(go-mode))
 
-(load "~/.doom.d/edward2")
+;; (load "~/.doom.d/edward2")
 
 (map! :map shell-mode-map "M-r" #'consult-history)
 
@@ -240,3 +242,9 @@ See URL `http://stylelint.io/'."
 ;; BTW, `apropos-value' is so cool 😎
 (delete ".lib" completion-ignored-extensions)
 (delete ".lib" dired-omit-extensions)
+
+(setq magit-log-margin '(t "%Y-%m-%d %H:%M " magit-log-margin-width t 18))
+(setq magit-log-margin-show-committer-date t)
+
+(setq auto-mode-alist (delete '("\\.tsx\\'" . typescript-tsx-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))

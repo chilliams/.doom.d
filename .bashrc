@@ -1,11 +1,10 @@
 # Don't put duplicate lines or lines starting with space in the history
 # See bash(1) for more options
 HISTCONTROL=ignoreboth:erasedups
-
 # Append to the history file, don't overwrite it
 shopt -s histappend
 # Append and reload the history after each command
-PROMPT_COMMAND="history -a; history -n"
+PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 # Ignore certain commands from the history
 HISTIGNORE="ls:ll:cd:pwd:bg:fg:history"
