@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one-light)
+(setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -64,9 +64,8 @@
 (setq mac-right-option-modifier 'meta)
 (setq mac-pass-command-to-system nil)
 
-
 ;; shell
-(setenv "EDITOR" "emacsclient")
+;; (setenv "EDITOR" "emacsclient")
 (require 'shell)
 
 ;; Make async-shell-command do what I want.
@@ -248,3 +247,15 @@ See URL `http://stylelint.io/'."
 
 (setq auto-mode-alist (delete '("\\.tsx\\'" . typescript-tsx-mode) auto-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
+
+(keymap-global-set "<remap> <async-shell-command>"
+                   #'with-editor-async-shell-command)
+(keymap-global-set "<remap> <shell-command>"
+                   #'with-editor-shell-command)
+
+(shell-command-with-editor-mode t)
+
+(add-hook 'shell-mode-hook  'with-editor-export-editor)
+(add-hook 'eshell-mode-hook 'with-editor-export-editor)
+(add-hook 'term-exec-hook   'with-editor-export-editor)
+(add-hook 'vterm-mode-hook  'with-editor-export-editor)
