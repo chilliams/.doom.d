@@ -23,3 +23,6 @@ query --noexperimental_check_output_files
 # Faster, but unreliable on MacOS:
 # https://github.com/bazelbuild/bazel/issues/13226
 build --watchfs
+
+# Skip sandboxing JS builds
+build --strategy=esbuild=local
