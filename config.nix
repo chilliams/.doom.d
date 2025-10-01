@@ -3,6 +3,7 @@
     all = pkgs.buildEnv {
       name = "all";
       paths = [
+        pkgs.bat
         pkgs.emacs
         pkgs.gitAndTools.gitFull
         pkgs.graphviz
