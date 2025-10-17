@@ -260,3 +260,9 @@ See URL `http://stylelint.io/'."
 (add-hook 'eshell-mode-hook 'with-editor-export-editor)
 (add-hook 'term-exec-hook   'with-editor-export-editor)
 (add-hook 'vterm-mode-hook  'with-editor-export-editor)
+
+(setq
+ gptel-model 'gemini-2.5-pro
+ gptel-backend (gptel-make-gemini "Gemini"
+                 :key (getenv "GEMINI_API_KEY")
+                 :stream t))
